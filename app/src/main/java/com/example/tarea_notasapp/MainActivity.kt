@@ -1,5 +1,6 @@
 package com.example.tarea_notasapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -19,9 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.FABAgregarNota.setOnClickListener {
-            Toast.makeText(applicationContext,
-                "has presionado en el FAB",
-                Toast.LENGTH_SHORT).show()
+            startActivity(Intent(applicationContext, AgregarNotaActivity::class.java))
         }
     }
 }
