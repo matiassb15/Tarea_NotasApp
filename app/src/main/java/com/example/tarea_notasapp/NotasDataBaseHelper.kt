@@ -1,8 +1,10 @@
 package com.redsystemstudio.notasapp_sqlite
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.tarea_notasapp.Nota
 
 class NotasDataBaseHelper(context: Context) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
@@ -29,4 +31,18 @@ class NotasDataBaseHelper(context: Context) : SQLiteOpenHelper(
         db?.execSQL(dropTableQuery)
         onCreate(db)
     }
+
+    fun insertNota(nota: Nota){
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put (COLUMN_TITLE, nota.titulo)
+            put (COLUMN_DESCRIPTION, nota.description)
+        }
+
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+    }
+
+
 }
