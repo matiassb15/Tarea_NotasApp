@@ -1,13 +1,12 @@
-package com.redsystemstudio.notasapp_sqlite
+package com.example.tarea_notasapp
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.tarea_notasapp.Nota
 
 class NotasDataBaseHelper(context: Context) : SQLiteOpenHelper(
-    context, DATABASE_NAME, null, DATABASE_VERSION
+    context, DATABASE_NAME, null, DATABASE_VERSION,
 ) {
 
     companion object {

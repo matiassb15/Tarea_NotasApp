@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tarea_notasapp.databinding.ActivityAgregarNotaBinding
-import com.redsystemstudio.notasapp_sqlite.NotasDataBaseHelper
 
 class AgregarNotaActivity : AppCompatActivity() {
 
