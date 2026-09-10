@@ -11,7 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class NotasAadptador (private var notas : List<Nota>, context: Context): RecyclerView.Adapter<NotasAadptador.NotaViewHolder>(){
+class NotasAadptador (private var notas : List<Nota>, context: Context): RecyclerView.Adapter<NotasAadptador.NotaViewHolder>() {
+
+    private val db : NotasDataBaseHelper = NotasDataBaseHelper(context)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nota,parent,false)
         return NotaViewHolder(view)
@@ -31,6 +34,12 @@ class NotasAadptador (private var notas : List<Nota>, context: Context): Recycle
             Toast.makeText(holder.itemView.context, "El id de la nota seleccionada es ${nota.id}", Toast.LENGTH_SHORT).show()
 
         }
+
+        holder.ivEliminar.setOnClickListener {
+            db.deleteNota(nota.id)
+            refrescarLista(db.getAllNotas())
+            Toast.makeText(holder.itemView.context, "Nota eliminada", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +50,7 @@ class NotasAadptador (private var notas : List<Nota>, context: Context): Recycle
         val itemTitulo : TextView = itemView.findViewById(R.id.item_titulo)
         val itemdescripcion : TextView = itemView.findViewById(R.id.item_descripcion)
         val ivActualizar: ImageView = itemView.findViewById(R.id.ivActualizar)
+        val ivEliminar : ImageView = itemView.findViewById(R.id.ivEliminar)
 
 
     }
