@@ -22,7 +22,7 @@
         android:padding="10dp"/>
 
     <ImageView
-        android:id="@+id/ivGuardarNota"
+        android:id="@+id/ivActualizarNota"
         android:src="@drawable/ic_check"
         android:layout_alignTop="@+id/txtActualizarNota"
         android:layout_alignParentEnd="true"
