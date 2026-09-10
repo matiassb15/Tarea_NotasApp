@@ -1,11 +1,14 @@
 package com.example.tarea_notasapp
 
 import android.content.Context
+import android.content.Intent
 import android.renderscript.Type
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class NotasAadptador (private var notas : List<Nota>, context: Context): RecyclerView.Adapter<NotasAadptador.NotaViewHolder>(){
@@ -18,6 +21,16 @@ class NotasAadptador (private var notas : List<Nota>, context: Context): Recycle
         val nota = notas[position]
         holder.itemTitulo.text = nota.titulo
         holder.itemdescripcion.text = nota.description
+
+        holder.ivActualizar.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ActualizarNotaActivity::class.java).apply {
+                putExtra("id_nota", nota.id)
+            }
+
+            holder.itemView.context.startActivity(intent)
+            Toast.makeText(holder.itemView.context, "El id de la nota seleccionada es ${nota.id}", Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -27,6 +40,7 @@ class NotasAadptador (private var notas : List<Nota>, context: Context): Recycle
     class NotaViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val itemTitulo : TextView = itemView.findViewById(R.id.item_titulo)
         val itemdescripcion : TextView = itemView.findViewById(R.id.item_descripcion)
+        val ivActualizar: ImageView = itemView.findViewById(R.id.ivActualizar)
 
 
     }
